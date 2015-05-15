@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: twilling
+  password: 12345
+
+test:
+  <<: *default
+  database: twilling_tst
+
+development:
+  <<: *default
+  database: twilling_dev
+
+production:
+  <<: *default
+  database: twilling_prd
+  password: <%= ENV['TWILLING_DATABASE_PASSWORD'] %>
+
